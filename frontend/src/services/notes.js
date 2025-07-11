@@ -1,5 +1,11 @@
 import axios from 'axios'
-const baseUrl = 'http://localhost:3000/api/notes'
+
+const baseUrl = process.env.REACT_APP_API_URL;
+
+// fetch example (can be removed if not needed)
+fetch(`${baseUrl}/api/notes`)
+  .then(response => response.json())
+  .then(data => console.log(data))
 
 const getAll = () => {
   const request = axios.get(baseUrl)
