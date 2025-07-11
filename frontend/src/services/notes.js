@@ -1,11 +1,11 @@
 import axios from 'axios'
 
-const baseUrl = process.env.REACT_APP_API_URL;
+const API_BASE_URL = import.meta.env.VITE_API_URL;
 
-// fetch example (can be removed if not needed)
-fetch(`${baseUrl}/api/notes`)
+// Example fetch:
+fetch(`${API_BASE_URL}/notes`)
   .then(response => response.json())
-  .then(data => console.log(data))
+  .then(data => console.log(data));
 
 const getAll = () => {
   const request = axios.get(baseUrl)
