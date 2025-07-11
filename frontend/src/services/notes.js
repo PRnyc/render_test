@@ -1,10 +1,23 @@
 import axios from 'axios'
 
-const baseUrl = import.meta.env.VITE_API_URL || '/api/notes';  // Define baseUrl properly
+const baseUrl = import.meta.env.VITE_API_URL || '/api';  // Define baseUrl properly
+
+// Temporary debug
+console.log('Current API configuration:', {
+  baseUrl,
+  fullUrl: `${baseUrl}/notes`,
+  env: import.meta.env.VITE_API_URL
+});
 
 const getAll = () => {
-  const request = axios.get(baseUrl)
-  return request.then(response => response.data)
+  try {const request = axios.get(baseUrl)
+  return request.then(response => response.data)}
+  catch (error) {
+    console.error('Error fetching notes:', {url: baseUrl,
+      status: error.response?.status,
+      data})
+    throw error
+  }
 }
 
 const create = newObject => {
