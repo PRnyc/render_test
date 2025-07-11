@@ -1,11 +1,6 @@
 import axios from 'axios'
 
-const API_BASE_URL = import.meta.env.VITE_API_URL || 'api';
-
-// Example fetch:
-fetch(`${API_BASE_URL}/notes`)
-  .then(response => response.json())
-  .then(data => console.log(data));
+const baseUrl = import.meta.env.VITE_API_URL || '/api/notes';  // Define baseUrl properly
 
 const getAll = () => {
   const request = axios.get(baseUrl)
@@ -22,8 +17,23 @@ const update = (id, newObject) => {
   return request.then(response => response.data)
 }
 
+// Test example (you can remove this in production)
+const testConnection = () => {
+  console.log(`Using API base URL: ${baseUrl}`)
+  return axios.get(baseUrl)
+    .then(response => {
+      console.log('Connection successful', response.data)
+      return response.data
+    })
+    .catch(error => {
+      console.error('Connection failed', error)
+      throw error
+    })
+}
+
 export default { 
     getAll,
     create,
-    update 
+    update,
+    testConnection  // Optional: helpful for debugging
 }
