@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const baseUrl = import.meta.env.VITE_API_URL || '/api';  // Define baseUrl properly
+const baseUrl = import.meta.env.VITE_API_URL ||  'https://render-test-yse8.onrender.com/api/notes';
 
 // Temporary debug
 console.log('Current API configuration:', {
